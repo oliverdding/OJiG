@@ -6,4 +6,3 @@ Online Judge in Go
 
 * 105.recursive
 * 106.recursive
-* 116.recursive-in-o1
