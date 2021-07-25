@@ -1,16 +1,16 @@
 package leetcode
 
-func levelOrder2(root *TreeNode) (vals [][]int) {
+func levelOrder(root *TreeNode) (vals [][]int) {
 	if root == nil {
 		return
 	}
-	curLevel := new([]*TreeNode)
-	nexLevel := new([]*TreeNode)
-	*curLevel = append(*curLevel, root)
-	for len(*curLevel) != 0 {
+	nexLevel := &[]*TreeNode{root}
+	for len(*nexLevel) != 0 {
 		var (
 			level []int
 		)
+		curLevel := nexLevel
+		nexLevel = new([]*TreeNode)
 		for i := 0; i < len(*curLevel); i++ {
 			level = append(level, (*curLevel)[i].Val)
 			if (*curLevel)[i].Left != nil {
@@ -20,9 +20,7 @@ func levelOrder2(root *TreeNode) (vals [][]int) {
 				*nexLevel = append(*nexLevel, (*curLevel)[i].Right)
 			}
 		}
-		*curLevel = (*curLevel)[:0]
 		vals = append(vals, level)
-		curLevel, nexLevel = nexLevel, curLevel
 	}
 	return
 }

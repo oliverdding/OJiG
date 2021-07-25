@@ -4,10 +4,10 @@ func connect(root *Node) *Node {
 	if root == nil {
 		return nil
 	}
-	curLevel := new([]*Node)
-	nexLevel := new([]*Node)
-	*curLevel = append(*curLevel, root)
-	for len(*curLevel) != 0 {
+	nexLevel := &[]*Node{root}
+	for len(*nexLevel) != 0 {
+		curLevel := nexLevel
+		nexLevel = new([]*Node)
 		last := len(*curLevel) - 1
 		for i := 0; i < last; i++ {
 			(*curLevel)[i].Next = (*curLevel)[i+1]
@@ -24,8 +24,6 @@ func connect(root *Node) *Node {
 		if (*curLevel)[last].Right != nil {
 			*nexLevel = append(*nexLevel, (*curLevel)[last].Right)
 		}
-		*curLevel = (*curLevel)[:0]
-		curLevel, nexLevel = nexLevel, curLevel
 	}
 	return root
 }
