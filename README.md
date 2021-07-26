@@ -6,3 +6,7 @@ Online Judge in Go
 
 * 105.recursive
 * 106.recursive
+
+## Mark
+
+* 236: interactive thought
