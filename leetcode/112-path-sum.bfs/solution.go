@@ -1,6 +1,6 @@
 package leetcode
 
-// 广度优先搜索
+// Breadth First Search
 func hasPathSum(root *TreeNode, targetSum int) bool {
 	if root == nil {
 		return false
